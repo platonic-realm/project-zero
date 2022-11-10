@@ -10,13 +10,13 @@ Project-Zero provides step-by-step instructions for building a minimal but funct
 
 "Let's build a minimal Linux-based operating system." does this sentence excites you? If yes, you might already have tried projects like LFS (Linux from scratch) or might be busy compiling your custom Linux kernel for your embedded device. These projects were joyful, but I still lack the ultimate insight and I want to know more about the Linux kernel and its subsystems. Additionally, I am interested in having a minimal but functional computing environment, using only bash, busy box, tmux, and an editor. Project-Zero is my answer to myself.
 
-We start by disabling every available option in the Linux kernel (disabling all the subsystems) and then based on our requirements, will gradually enable them. Also, I provide more explanations or resources for each of the subsystems in use. For example, in the beginning, we start with only the kernel and bash, and we don't need any file-system or network support. The project consists of several stages. At any stage, we add some functionality that corresponds to a collection of user space software and kernel space tweaks.
+We start by disabling every available option in the Linux kernel (disabling all the subsystems) and then based on our requirements, will gradually enable them. Also, I provide more explanations or resources for each of the subsystems in use. For example, in the beginning, we start with only the kernel and bash, and we don't need any file-system or network support. The project consists of several chapters. At any chapter, we add some functionality that corresponds to a collection of user space software and kernel space tweaks.
 
 -------
 <h3><a href="Chapter-0.md">Chapter 0: Development Environment</a></h3>
 
 
-To standardize our development environment, we create an Alpine-based docker(OCI) image. Stage 0 describes the procedure. Alternatively, you can pull the image from the docker hub. Also, we need qemu for virtualization. We compile our software using the docker container and then use qemu to run it.
+To standardize our development environment, we create an Alpine-based [OCI](https://github.com/opencontainers/image-spec/blob/main/spec.md) image. Chapter 0 describes the procedure. Alternatively, you can pull the image from the docker hub. Also, we need qemu for virtualization. We compile our software using the docker container and then use qemu to run it.
 
 -------
 <h3><a href="Chapter-1.md">Chapter 1: Linux + Bash</a></h3>
@@ -55,7 +55,7 @@ We can use BusyBox for user management, networking, etc. To do so, we need to ad
 -------
 <h3>Who is it for?</h2>
 
-You don't need to be a veteran. But you need to be familiar with Bash, docker, build tools (GCC, make, etc.), and how dynamic linking works. The rest you will learn along the project. The development in stage 7 will be in Bash, and no C programming skills are needed. But, it is beneficial to have a high-level understanding of how compilation and linking work in C compilers.
+You don't need to be a veteran. But you need to be familiar with Bash, docker, build tools (GCC, make, etc.), and how dynamic linking works. The rest you will learn along the project. The development in chapter 7 will be in Bash, and no C programming skills are needed. But, it is beneficial to have a high-level understanding of how compilation and linking work in C compilers.
 
 
 -------
