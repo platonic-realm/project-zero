@@ -12,8 +12,8 @@ Project-Zero provides step-by-step instructions for building a minimal but funct
 
 We start by disabling every available option in the Linux kernel (disabling all the subsystems) and then based on our requirements, will gradually enable them. Also, I provide more explanations or resources for each of the subsystems in use. For example, in the beginning, we start with only the kernel and bash, and we don't need any file-system or network support. The project consists of several stages. At any stage, we add some functionality that corresponds to a collection of user space software and kernel space tweaks.
 
-##[Chapter 0: Development Environment](Chapter-0.md)
-
+-------
+<h3><a href="Chapter-0.md">Chapter 0: Development Environment</a></h3>
 
 
 To standardize our development environment, we create an Alpine-based docker(OCI) image. Stage 0 describes the procedure. Alternatively, you can pull the image from the docker hub. Also, we need qemu for virtualization. We compile our software using the docker container and then use qemu to run it.
@@ -51,14 +51,12 @@ We can use BusyBox for user management, networking, etc. To do so, we need to ad
 -------
 <h3><a href="Spin-off.md">Spin off: ARM support</a></h3>
 
-<br />
 
 -------
 <h3>Who is it for?</h2>
 
 You don't need to be a veteran. But you need to be familiar with Bash, docker, build tools (GCC, make, etc.), and how dynamic linking works. The rest you will learn along the project. The development in stage 7 will be in Bash, and no C programming skills are needed. But, it is beneficial to have a high-level understanding of how compilation and linking work in C compilers.
 
-<br />
 
 -------
 <h3>Disclaimer</h2>
