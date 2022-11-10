@@ -53,13 +53,15 @@ We can use BusyBox for user management, networking, etc. To do so, we need to ad
 
 <br />
 
-## Who is it for?
+-------
+<h2>Who is it for?</h3>
 
 You don't need to be a veteran. But you need to be familiar with Bash, docker, build tools (GCC, make, etc.), and how dynamic linking works. The rest you will learn along the project. The development in stage 7 will be in Bash, and no C programming skills are needed. But, it is beneficial to have a high-level understanding of how compilation and linking work in C compilers.
 
 <br />
 
-## Disclaimer
+-------
+<h2>Disclaimer</h3>
 
 The operating system built in this project is meant for educational purposes only. There is no guarantee for its security, reliability, and efficiency in real-world applications.
 
