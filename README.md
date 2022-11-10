@@ -12,12 +12,12 @@ Project-Zero provides step-by-step instructions for building a minimal but funct
 
 We start by disabling every available option in the Linux kernel (disabling all the subsystems) and then based on our requirements, will gradually enable them. Also, I provide more explanations or resources for each of the subsystems in use. For example, in the beginning, we start with only the kernel and bash, and we don't need any file-system or network support. The project consists of several stages. At any stage, we add some functionality that corresponds to a collection of user space software and kernel space tweaks.
 
-- - -
+<hr style="border: solid gray; border-width: 1px 0 0 0">
 <h3 ><a href="Chapter-0.md">Chapter 0: Development Environment</a></h3>
 
 To standardize our development environment, we create an Alpine-based docker(OCI) image. Stage 0 describes the procedure. Alternatively, you can pull the image from the docker hub. Also, we need qemu for virtualization. We compile our software using the docker container and then use qemu to run it.
 
-<hr />
+<hr style="border: solid gray; border-width: 1px 0 0 0">
 <h3><a href="Chapter-1.md">Chapter 1: Linux + Bash</a></h3>
 
 
