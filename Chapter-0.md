@@ -5,11 +5,11 @@ I use [Podman](https://podman.io/) (It's better suited for the steam deck, which
 
 So we need Podman or Docker installed before proceeding. If you are using podman, replace "docker" with "podman" in the commands or add ```alias docker='podman'``` to your **.bashrc** and continue using the docker instead of podman.
 
-We will build an x86 OS, and to keep everything simple, we will use an x86 version of alpine. Therefore, upon pulling the alpine image, you might encounter a warning. I will add spin-off projects for other ISAs in the future, and they will have their own OCI images. The tag of the images determines the host and target ISA. For example, x86-x86 is an x86 system that targets building an x86 OS. But AMD64-ARM is an AMD64 host for cross-compilation of an ARM OS.
+We will build an x86 OS, and to keep everything simple, we will use an x86 version of alpine. Therefore, upon pulling the alpine image, you might encounter a warning. I will add spin-off projects for other ISAs in the future, and they will have their own OCI images. The tag of the images determines the host and target ISA. For example, x86-x86 is an x86 system that targets building an x86 OS. But amd64-arm is an amd64 host for cross-compilation of an arm OS.
 
 ### The easy way:
 To pull the image from docker.io:
 ```
-docker pull prealm/project-zero:x86
+docker pull prealm/project-zero:x86-x86
 ```
 ### The fun way:
