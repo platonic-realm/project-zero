@@ -16,7 +16,7 @@ docker pull prealm/project-zero:x86-x86
 ```
 ### The fun way:
 All we need to build the image is a [Dockerfile](https://docs.docker.com/engine/reference/builder/). Our **Dockerfile** consists of three simple commands that are explained below:
-1. To use **i386/alpine:3.16.2** as the base (The next steps will add up to what has already provided in this image) 
+1. To use [i386/alpine:3.16.2](https://hub.docker.com/r/i386/alpine/) as the base (The next steps will add up to what has already provided in this image) 
 ```
 FROM i386/alpine:3.16.2
 ```
