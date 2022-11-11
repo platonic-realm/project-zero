@@ -64,7 +64,7 @@ RUN apk add \
 ```
 ---
 
-To create the the image follow below steps and execute the commands consecutively.
+Now lets create the the image by following below steps and execute the commands consecutively.
 
 1. Create a directory. I will call it "x86-x86".
 ```
