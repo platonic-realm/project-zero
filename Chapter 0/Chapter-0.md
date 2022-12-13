@@ -27,23 +27,23 @@ FROM i386/alpine:3.16.2
 RUN apk update
 ```
 
-3. To install a collection of the necessary packages
-    * bash
-    * bc
-    * bison
-    * build-base
-    * cpio
-    * flex
-    * libelf
-    * libelf-static
-    * elfutils-dev
-    * ncurses-dev
-    * ncurses-static
-    * openssl-dev
-    * openssl-libs-static
-    * linux-headers 
-    * xz
-    * vim
+3. To install a collection of the [necessary packages](./Packages.md)
+    * [bash](./Packages.md#bash)
+    * [bc](./Packages.md#bc)
+    * [bison](./Packages.md#bison)
+    * [build-base](./Packages.md#build-base)
+    * [cpio](./Packages.md#cpio)
+    * [flex](./Packages.md#flex)
+    * [libelf](./Packages.md#libelf)
+    * [libelf-static](./Packages.md#libelf-static)
+    * [elfutils-dev](./Packages.md#elfutils-dev)
+    * [ncurses-dev](./Packages.md#ncurses-dev)
+    * [ncurses-static](./Packages.md#ncurses-static)
+    * [openssl-dev](./Packages.md#openssl-dev)
+    * [openssl-libs-static](./Packages.md#openssl-libs-static)
+    * [linux-headers](./Packages.md#linux-headers)
+    * [xz](./Packages.md#xz)
+    * [vim](./Packages.md#vim)
 
 ```
 RUN apk add \
