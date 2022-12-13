@@ -8,11 +8,11 @@ We will use our alpine container to compile the kernel and other necessary piece
 
 ## [bash](https://pkgs.alpinelinux.org/package/v3.16/main/x86/bash)
 
-
+Bash is a sh-compatible shell that we rely on both for building our operating system and for its feature development. For more information about bash itself, please refer to [this link](https://www.gnu.org/software/bash/bash.html).
 
 ## [bc](https://pkgs.alpinelinux.org/package/v3.16/main/x86/bc)
 
-
+[bc](https://www.gnu.org/software/bc/bc.html) is an arbitrary precision numeric processing language and [its needed to build the kernel](https://unix.stackexchange.com/questions/439482/why-is-bc-required-to-build-the-linux-kernel).
 
 ## [bison](https://pkgs.alpinelinux.org/package/v3.16/main/x86/bison)
 
