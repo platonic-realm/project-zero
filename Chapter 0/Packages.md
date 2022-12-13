@@ -4,66 +4,61 @@
 
 We will use our alpine container to compile the kernel and other necessary pieces of software. Later on, we also borrow some dynamic libraries from it. Therefore not all the installed packages are needed for building the kernel.
 
--------
+
 
 ## [bash](https://pkgs.alpinelinux.org/package/v3.16/main/x86/bash)
 
--------
+
 
 ## [bc](https://pkgs.alpinelinux.org/package/v3.16/main/x86/bc)
 
--------
+
 
 ## [bison](https://pkgs.alpinelinux.org/package/v3.16/main/x86/bison)
 
--------
 
-## build-base
 
--------
+## [build-base](https://pkgs.alpinelinux.org/package/v3.16/main/x86/build-base)
 
-## cpio
 
--------
 
-## flex
+## [cpio](https://pkgs.alpinelinux.org/package/v3.16/community/x86/cpio)
 
--------
 
-## libelf
 
--------
+## [flex](https://pkgs.alpinelinux.org/package/v3.16/main/x86/flex)
 
-## libelf-static
 
--------
 
-## elfutils-dev
+## [libelf](https://pkgs.alpinelinux.org/package/v3.16/main/x86/libelf)
 
--------
 
-## ncurses-dev
 
--------
+## [libelf-static](https://pkgs.alpinelinux.org/package/v3.16/main/x86/libelf-static)
 
-## ncurses-static
 
--------
 
-## openssl-dev
+## [elfutils-dev](https://pkgs.alpinelinux.org/package/v3.16/main/x86/elfutils-dev)
 
--------
 
-## openssl-libs-static
 
--------
+## [ncurses-dev](https://pkgs.alpinelinux.org/package/v3.16/main/x86/ncurses-dev)
 
-## linux-headers 
 
--------
 
-## xz
+## [ncurses-static](https://pkgs.alpinelinux.org/package/v3.16/main/x86/ncurses-static)
 
--------
 
-## vim
+## [openssl-dev](https://pkgs.alpinelinux.org/package/v3.16/main/x86/openssl-dev)
+
+
+## [openssl-libs-static](https://pkgs.alpinelinux.org/package/v3.16/main/x86/openssl-libs-static)
+
+
+## [linux-headers](https://pkgs.alpinelinux.org/package/v3.16/main/x86/linux-headers)
+
+
+## [xz](https://pkgs.alpinelinux.org/package/v3.16/main/x86/xz)
+
+
+## [vim](https://pkgs.alpinelinux.org/package/v3.16/main/x86/vim)
