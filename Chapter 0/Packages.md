@@ -68,7 +68,7 @@ Contains the statically linked files (".a" files) of [OpenSSL](https://www.opens
 
 ## [linux-headers](https://pkgs.alpinelinux.org/package/v3.16/main/x86/linux-headers)
 
-This package contains the Linux kernel header files, which are needed for building the "menuconfig" option while configuring the kernel. The ncurses-based configuration of kernel needs them and not compiling the kernel itself.
+This package contains the Linux kernel header files. They are part of the linux kernel that is shipped separately. Here you can read why it is needed and why it is ok if the version of headers and kernel is not the same. We won't use them in our target operating system but need them in the Alpine container to build the kernel.
 
 ## [xz](https://pkgs.alpinelinux.org/package/v3.16/main/x86/xz)
 
