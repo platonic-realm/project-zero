@@ -37,7 +37,7 @@ Now that our kernel has access to a storage device and can read the ext2 filesys
 -------
 <h3><a href="Chapter-4.md">Chapter 4: Userspace configurations</a></h3>
 
-We can use BusyBox for user management, networking, etc. To do so, we need to add some configuration files to the filesystem. This chapter is about these configuration files. The network configuration files are also added in this chapter but will be used in the next one.
+We will use BusyBox for user management, networking, etc. To do so, we need to add some configuration files to the filesystem. This chapter is about these configuration files. The network configuration files are also added in this chapter but will be used in the next one.
 
 -------
 <h3><a href="Chapter-5.md">Chapter 5: Networking support</a></h3>
