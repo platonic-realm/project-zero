@@ -18,7 +18,7 @@ First, create a directory named **"host"**. We map this directory into the conta
 mkdir host && cd host
 ```
 
-If you followed the previous instructions in Chapter 0, you have a OCI image called **"project-zero"** with **"x86-x86"** tag. Below command will run the container.
+If you followed the previous instructions in [Chapter 0](../Chapter-0/Chapter-0.md), you have a OCI image called **"project-zero"** with **"x86-x86"** tag. Below command will run the container.
 
 ```
 docker run --user $(id -u):$(id -g) --platform=i386 --rm -it -v $(pwd):/host project-zero:x86-x86
