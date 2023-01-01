@@ -91,11 +91,30 @@ Then we go into our kernel's source tree.
 cd linux-6.1.2/
 ```
 
+Linux kernel has tons of configuration, some of them depend on each other and sometimes their availabilty also depends on other options. To make life easier for ourself, we create a config file with all features disabled.
+
+```
+make O=../linux-build/ allnoconfig
+```
+* **O=** Specify the output directory for the built kernel and associated files.
+
+* **allnoconfig** sets all configuration options to their default value of "no", resulting in a kernel with no support for any features or hardware devices.
+
 At this point, I give you two options. The easy option would be to copy a ready to use **.config** file into your build directory and compile the kernel. The fun option would be to configure the kernel yourself based on detailed step-by-step instructions and explanations. These two options is mutually excusive, choose one.
 
 ### **Option 1:** To copy the configurations
 
-### **Option 2:** To configure the kernel your self:
+Go to the build directory:
+```
+cd ../linux-build/
+```
+
+Download the already configured configuration file:
+```
+wget https://raw.githubusercontent.com/platonic-realm/project-zero/main/Chapter-1/kernel/.config
+```
+
+### **Option 2:** To configure the kernel your self
 
 ## Step 3: Configuring and bulding busybox
 
