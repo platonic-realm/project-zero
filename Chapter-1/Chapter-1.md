@@ -53,7 +53,7 @@ And do the same for Busybox:
 wget https://www.busybox.net/downloads/busybox-1.35.0.tar.bz2
 ```
 
-Now we use **"tar"** command to extract the content of the tar file and have access to the acutal source codes.
+Now we use ["tar"](https://www.gnu.org/software/tar/) command to extract the content of the tar file and have access to the acutal source codes.
 
 We want to extract the source code in the parent directory, so:
 ```
@@ -80,6 +80,22 @@ At the end, the host directory content should be like this:
 ![host directory content](img/host_directory_source_codes.png)
 
 ## Step 3: Configuring and bulding the Linux kernel
+
+We will build the kernel in a separate directory named **"linux-build"**, so we first need to create it.
+```
+mkdir linux-build
+```
+
+Then we go into our kernel's source tree.
+```
+cd linux-6.1.2/
+```
+
+At this point, I give you two options. The easy option would be to copy a ready to use **.config** file into your build directory and compile the kernel. The fun option would be to configure the kernel yourself based on detailed step-by-step instructions and explanations. These two options is mutually excusive, choose one.
+
+### **Option 1:** To copy the configurations
+
+### **Option 2:** To configure the kernel your self:
 
 ## Step 3: Configuring and bulding busybox
 
