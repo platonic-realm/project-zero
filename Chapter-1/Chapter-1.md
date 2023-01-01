@@ -1,8 +1,14 @@
 [Back](../README.md)
 
-# Chapter 1: Linux + sh
+# Chapter 1: Linux + "sh" shell
 
 I assume we have our OCI image ready and can use docker or podman to run a container to start building the system.
+
+In this chapter we disable all Linux kernel features and then enable only the bare minimum needed to run a **sh** shell after boot. We heavily rely on [Busybox](https://busybox.net/) in this project this project. So, to save time, instead of statically building another shell and use it as **init** process, we use builtin **sh** shell inside Busybox.
+
+[Busybox](https://busybox.net/) is a software suite that provides several Unix utilities in a single executable file. It is often used in embedded devices because it is small, efficient, and provides a simple interface for users to access the utilities. Some of the utilities that BusyBox provides include ls, cat, echo, grep, and sed, among others. BusyBox can be configured to include or exclude certain utilities, depending on the needs of the device it is being used on.
+
+After running our development container, we build the minimal kernel and Busybox executable. Then, we will create an **initrd** image using **cpio**. At the end, using qemu, we will mix everything together to run the compiled Linux kernel with the Busybox binary as the **userspace** software in an virtualized environment.
 
 ## Step 1: Running the container
 
@@ -29,6 +35,49 @@ After running the command, you should have something similar to the below image:
 ![container started](img/container_started.png)
 
 ## Step 2: Downloading the kernel and busybox source codes
+ 
+ Both Linux kernel's and Busybox's configurations remains consisstance most of the times. But, new feature are introduced in new releases and sometimes lead to a minor rearrangement of configurations. Therefore, I suggest to use the exact same version of them in your first build. We will [Linux 6.1.2](https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz) and [Busybox 1.35.0](https://www.busybox.net/downloads/busybox-1.35.0.tar.bz2).
+
+First, we create a directory **"res"** to download the source code tar files.
+```
+mkdir res && cd res
+```
+
+Then download the Linux source tar file with command:
+```
+wget https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz
+```
+
+And do the same for Busybox:
+```
+wget https://www.busybox.net/downloads/busybox-1.35.0.tar.bz2
+```
+
+Now we use **"tar"** command to extract the content of the tar file and have access to the acutal source codes.
+
+We want to extract the source code in the parent directory, so:
+```
+cd ..
+```
+
+Then for Linux kernel:
+```
+tar xvf res/linux-6.1.2.tar.xz
+```
+
+And for Busybox:
+```
+tar xvf res/busybox-1.35.0.tar.bz2
+```
+
+Regarding the tar command:
+* The **"x"** option stands for "extract", and tells tar to extract the contents of an archive. 
+* The **"v"** option stands for "verbose", and tells tar to print the names of the files it is extracting to the terminal as it is extracting them.
+* The **"f"** option stands for "file", and specifies the name of the archive file that tar should operate on.
+
+At the end, the host directory content should be like this:
+
+![host directory content](img/host_directory_source_codes.png)
 
 ## Step 3: Configuring and bulding the Linux kernel
 

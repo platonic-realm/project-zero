@@ -19,7 +19,7 @@ We start by disabling every available option in the Linux kernel (disabling all 
 To standardize our development environment, we create an Alpine-based [OCI](https://github.com/opencontainers/image-spec/blob/main/spec.md) image. Chapter 0 describes the procedure. Alternatively, you can pull the image from the docker hub. Also, we need qemu for virtualization. We compile our software using the docker container and then use qemu to run it.
 
 -------
-<h3><a href="Chapter-1/Chapter-1.md">Chapter 1: Linux + sh</a></h3>
+<h3><a href="Chapter-1/Chapter-1.md">Chapter 1: Linux + "sh" shell</a></h3>
 
 
 We compile the kernel with minimal enabled features. Also, we compile Busybox statically and write a minimal init script. The goal is to give you an insight into how kernel initiates userspace processes. Busybox provide much more than a shell, but in this chapter we just use it to have a shell running after boot.
