@@ -36,7 +36,7 @@ After running the command, you should have something similar to the below image:
 
 ## Step 2: Downloading the kernel and busybox source codes
  
- Both Linux kernel's and Busybox's configurations remains consisstant most of the times. But, new feature are introduced in new releases and sometimes lead to a minor rearrangement of configurations. Therefore, I suggest to use the exact same version of them in your first build. We will [Linux 6.1.2](https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz) and [Busybox 1.35.0](https://www.busybox.net/downloads/busybox-1.35.0.tar.bz2).
+ Linux kernel's and Busybox's configurations remain consistent most of the time. But, new features are introduced in new releases and sometimes lead to a minor rearrangement of configurations. Therefore, I suggest using the same version of them in your first build. We will [Linux 6.1.2](https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz) and [Busybox 1.35.0](https://www.busybox.net/downloads/busybox-1.35.0.tar.bz2).
 
 First, we create a directory **"res"** to download the source code tar files.
 ```
