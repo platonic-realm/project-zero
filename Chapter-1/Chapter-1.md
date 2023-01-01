@@ -4,11 +4,11 @@
 
 I assume we have our OCI image ready and can use docker or podman to run a container to start building the system.
 
-In this chapter we disable all Linux kernel features and then enable only the bare minimum needed to run a **sh** shell after boot. We heavily rely on [Busybox](https://busybox.net/) in this project this project. So, to save time, instead of statically building another shell and use it as **init** process, we use builtin **sh** shell inside Busybox.
+In this chapter we disable all Linux kernel features and then enable only the bare minimum needed to run a **sh** shell after boot. We heavily rely on [BusyBox](https://busybox.net/) in this project this project. So, to save time, instead of statically building another shell and use it as **init** process, we use builtin **sh** shell inside BusyBox.
 
-[Busybox](https://busybox.net/) is a software suite that provides several Unix utilities in a single executable file. It is often used in embedded devices because it is small, efficient, and provides a simple interface for users to access the utilities. Some of the utilities that BusyBox provides include ls, cat, echo, grep, and sed, among others. BusyBox can be configured to include or exclude certain utilities, depending on the needs of the device it is being used on.
+[BusyBox](https://busybox.net/) is a software suite that provides several Unix utilities in a single executable file. It is often used in embedded devices because it is small, efficient, and provides a simple interface for users to access the utilities. Some of the utilities that BusyBox provides include ls, cat, echo, grep, and sed, among others. BusyBox can be configured to include or exclude certain utilities, depending on the needs of the device it is being used on.
 
-After running our development container, we build the minimal kernel and Busybox executable. Then, we will create an **initrd** image using **cpio**. At the end, using qemu, we will mix everything together to run the compiled Linux kernel with the Busybox binary as the **userspace** software in an virtualized environment.
+After running our development container, we build the minimal kernel and BusyBox executable. Then, we will create an **initrd** image using **cpio**. At the end, using qemu, we will mix everything together to run the compiled Linux kernel with the BusyBox binary as the **userspace** software in an virtualized environment.
 
 ## Step 1: Running the container
 
@@ -34,9 +34,9 @@ After running the command, you should have something similar to the below image:
 
 ![container started](img/container_started.png)
 
-## Step 2: Downloading the kernel and busybox source codes
+## Step 2: Downloading the kernel and BusyBox source codes
  
-Linux kernel's and Busybox's configurations remain consistent most of the time. But, new features are introduced in new releases and sometimes lead to a minor rearrangement of configurations. Therefore, I suggest using the same version mentioned next in your first build. We will [Linux 6.1.2](https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz) and [Busybox 1.35.0](https://www.busybox.net/downloads/busybox-1.35.0.tar.bz2).
+Linux kernel's and BusyBox's configurations remain consistent most of the time. But, new features are introduced in new releases and sometimes lead to a minor rearrangement of configurations. Therefore, I suggest using the same version mentioned next in your first build. We will [Linux 5.15.86](https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.86.tar.xz) and [BusyBox 1.35.0](https://www.busybox.net/downloads/busybox-1.35.0.tar.bz2).
 
 First, we create a directory **"res"** to download the source code tar files.
 ```
@@ -45,10 +45,10 @@ mkdir res && cd res
 
 Then download the Linux source tar file with command:
 ```
-wget https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.86.tar.xz
 ```
 
-And do the same for Busybox:
+And do the same for BusyBox:
 ```
 wget https://www.busybox.net/downloads/busybox-1.35.0.tar.bz2
 ```
@@ -62,10 +62,10 @@ cd ..
 
 Then for Linux kernel:
 ```
-tar xvf res/linux-6.1.2.tar.xz
+tar xvf res/linux-5.15.86.tar.xz
 ```
 
-And for Busybox:
+And for BusyBox:
 ```
 tar xvf res/busybox-1.35.0.tar.bz2
 ```
@@ -88,7 +88,7 @@ mkdir linux-build
 
 Then we go into our kernel's source tree.
 ```
-cd linux-6.1.2/
+cd linux-5.15.86/
 ```
 
 Linux kernel has tons of configuration, some of them depend on each other and sometimes their availabilty also depends on other options. To make life easier for ourself, we create a config file with all features disabled.
@@ -98,7 +98,7 @@ make O=../linux-build/ allnoconfig
 ```
 * **O=** Specify the output directory for the built kernel and associated files.
 
-* **allnoconfig** sets all configuration options to their default value of "no", resulting in a kernel with no support for any features or hardware devices.
+* [**allnoconfig**](https://www.kernel.org/doc/makehelp.txt) sets all configuration options to their default value of "no", resulting in a kernel with no support for any features or hardware devices.
 
 At this point, I give you two options. The easy option would be to copy a ready to use **.config** file into your build directory and compile the kernel. The fun option would be to configure the kernel yourself based on detailed step-by-step instructions and explanations. These two options is mutually excusive, choose one.
 
@@ -111,12 +111,14 @@ cd ../linux-build/
 
 Download the already configured configuration file:
 ```
-wget https://raw.githubusercontent.com/platonic-realm/project-zero/main/Chapter-1/kernel/.config
+wget -c https://raw.githubusercontent.com/platonic-realm/project-zero/main/Chapter-1/kernel/.config
 ```
+
+Alpine linux(which our container is based upon it) also uses BusyBox and the version of wget included with BusyBox does not support the -N option for timestamping. However, you can use the -c option to allow wget to resume a download that was previously interrupted, which will effectively overwrite the local file.
 
 ### **Option 2:** To configure the kernel your self
 
-## Step 3: Configuring and bulding busybox
+## Step 3: Configuring and bulding BusyBox
 
 ## Step 4: Create a initrd image
 
