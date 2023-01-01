@@ -19,15 +19,15 @@ We start by disabling every available option in the Linux kernel (disabling all 
 To standardize our development environment, we create an Alpine-based [OCI](https://github.com/opencontainers/image-spec/blob/main/spec.md) image. Chapter 0 describes the procedure. Alternatively, you can pull the image from the docker hub. Also, we need qemu for virtualization. We compile our software using the docker container and then use qemu to run it.
 
 -------
-<h3><a href="Chapter-1/Chapter-1.md">Chapter 1: Linux + Bash</a></h3>
+<h3><a href="Chapter-1/Chapter-1.md">Chapter 1: Linux + sh</a></h3>
 
 
-We compile the kernel with minimal enabled features. Also, we compile Bash statically and use it as the init process. The goal is to give you an insight into how kernel initiates userspace processes.
+We compile the kernel with minimal enabled features. Also, we compile Busybox statically and write a minimal init script. The goal is to give you an insight into how kernel initiates userspace processes. Busybox provide much more than a shell, but in this chapter we just use it to have a shell running after boot.
 
 -------
 <h3><a href="Chapter-2.md">Chapter 2: Filesystem support</a></h3>
 
-We need to add more functionality to our boring Bash interpreter. To do so, we will use BusyBox along with tmux and nano. Therefore, we need a sort of storage to store our userspace application. So our kernel should be able to communicate with the corresponding storage hardware and also, interpret its content as files. In this chapter, we will configure the kernel to add these functionalities.
+We need to add more functionality to our boring sh interpreter. To do so, we will use BusyBox along with tmux and nano. Therefore, we need a sort of storage to store our userspace application. So our kernel should be able to communicate with the corresponding storage hardware and also, interpret its content as files. In this chapter, we will configure the kernel to add these functionalities.
 
 -------
 <h3><a href="Chapter-3.md">Chapter 3: BusyBox</a></h3>
