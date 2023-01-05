@@ -10,6 +10,22 @@ In this chapter we disable all Linux kernel features and then enable only the ba
 
 After running our development container, we build the minimal kernel and BusyBox executable. Then, we will create an **initrd** image using **cpio**. At the end, using qemu, we will mix everything together to run the compiled Linux kernel with the BusyBox binary as the **userspace** software in an virtualized environment.
 
+## Introduction
+
+In a typical Linux system, the kernel is responsible for managing the hardware resources of the system and providing an interface for user programs to access these resources. The kernel is typically loaded into memory at boot time and remains resident in memory for the duration of the system's uptime.
+
+User programs, on the other hand, are normal programs that run on the system and perform various tasks such as editing text files, browsing the web, or playing games. These programs are executed in user space, which is a portion of the system's memory that is dedicated to running user programs.
+
+The separation of user space and kernel space is implemented through the use of virtual memory, which allows the operating system to map different portions of the system's physical memory to different logical addresses. The kernel is typically mapped to a high range of logical addresses, while user space is mapped to a lower range of addresses.
+
+This separation is important because it helps to protect the kernel from interference or corruption by user programs. If a user program were able to write to the kernel's memory space, it could potentially cause the kernel to crash or behave unexpectedly, leading to system instability or even a complete system failure.
+
+To prevent this from occurring, the kernel is carefully designed to prevent user programs from directly accessing its memory space. Instead, user programs must use system calls and other mechanisms to request access to kernel resources or services. The kernel can then decide whether to grant the request, based on factors such as the privileges of the requesting program and the current state of the system.
+
+The separation of user space and kernel space also allows the kernel to control and prioritize access to system resources, ensuring that important processes and tasks are given priority over less important ones. This helps to ensure that the system remains responsive and stable, even when running multiple programs concurrently.
+
+In summary, the concept of user space and kernel space in the Linux operating system is a key feature that helps to ensure the stability, security, and efficient operation of the system by protecting the kernel and its resources from interference or corruption by user programs.
+
 ## Step 1: Running the container
 
 First, create a directory named **"host"**. We map this directory into the container filesystem to act as shared storage between the host and the container.
