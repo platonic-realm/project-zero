@@ -1,20 +1,18 @@
 [Back](../README.md)
 
-# Chapter 1: Linux + "sh" shell
+# Chapter 1: Linux + sh
 
 I assume we have our OCI image ready and can use docker or podman to run a container to start building the system.
 
-In this chapter we disable all Linux kernel features and then enable only the bare minimum needed to run a **sh** shell after boot. We heavily rely on [BusyBox](https://busybox.net/) in this project this project. So, to save time, instead of statically building another shell and use it as **init** process, we use builtin **sh** shell inside BusyBox.
+In this chapter we disable all Linux kernel features and then enable only the bare minimum needed to run a **sh** shell after boot. We heavily rely on [BusyBox](https://busybox.net/) in this project. So, to save time, instead of statically building another shell and use it as **init** process, we use builtin **sh** shell inside BusyBox.
 
 [BusyBox](https://busybox.net/) is a software suite that provides several Unix utilities in a single executable file. It is often used in embedded devices because it is small, efficient, and provides a simple interface for users to access the utilities. Some of the utilities that BusyBox provides include ls, cat, echo, grep, and sed, among others. BusyBox can be configured to include or exclude certain utilities, depending on the needs of the device it is being used on.
 
 After running our development container, we build the minimal kernel and BusyBox executable. Then, we will create an **initrd** image using **cpio**. At the end, using qemu, we will mix everything together to run the compiled Linux kernel with the BusyBox binary as the **userspace** software in an virtualized environment.
 
-## Introduction
+## Kernel Space & User Space
 
-In a typical Linux system, the kernel is responsible for managing the hardware resources of the system and providing an interface for user programs to access these resources. The kernel is typically loaded into memory at boot time and remains resident in memory for the duration of the system's uptime.
-
-User programs, on the other hand, are normal programs that run on the system and perform various tasks such as editing text files, browsing the web, or playing games. These programs are executed in user space, which is a portion of the system's memory that is dedicated to running user programs.
+In a typical Linux system, the kernel is responsible for managing the hardware resources of the system and providing an interface for user programs to access these resources. The kernel is typically loaded into memory at boot time and remains resident in memory for the duration of the system's uptime. On the other hand, user programs are executed in user space, which is a portion of the system's memory that is dedicated to running user programs.
 
 The separation of user space and kernel space is implemented through the use of virtual memory, which allows the operating system to map different portions of the system's physical memory to different logical addresses. The kernel is typically mapped to a high range of logical addresses, while user space is mapped to a lower range of addresses.
 
@@ -25,6 +23,26 @@ To prevent this from occurring, the kernel is carefully designed to prevent user
 The separation of user space and kernel space also allows the kernel to control and prioritize access to system resources, ensuring that important processes and tasks are given priority over less important ones. This helps to ensure that the system remains responsive and stable, even when running multiple programs concurrently.
 
 In summary, the concept of user space and kernel space in the Linux operating system is a key feature that helps to ensure the stability, security, and efficient operation of the system by protecting the kernel and its resources from interference or corruption by user programs.
+
+## init process
+
+it's important to note that the init process is the first process that is started in userspace, after the kernel has completed its own initialization.
+
+The init process is responsible for starting other programs and services that are needed for the system to function, and it is typically the parent process of all other user space processes on the system. 
+
+There are different init systems available for Linux, each with its own approach to starting and managing processes. Some common init systems include:
+
+* System V init: This is the traditional init system used by many Linux distributions. It uses a series of shell scripts to start and stop services, and to transition the system between different runlevels.
+
+* Upstart: This init system was developed by Ubuntu and is designed to start services in parallel, rather than sequentially as in System V init. It uses event-based triggers to start and stop services.
+
+* Systemd: This is the most widely used init system in modern Linux distributions. It is designed to start and manage services and other processes in a more efficient and reliable way. It uses a combination of configuration files and system management daemons to control the system.
+
+Each init system has its own advantages and disadvantages, and the choice of which init system to use is typically made by the distribution maintainer.
+
+Our system is simple and doesn't need a fullfledged init system, in this chapter we write a simple script as the init process and in future, we use BusyBox's init funtionalities.
+
+Now, lets start building. 
 
 ## Step 1: Running the container
 
