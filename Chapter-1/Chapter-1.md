@@ -30,6 +30,8 @@ it's important to note that the init process is the first process that is starte
 
 The init process is responsible for starting other programs and services that are needed for the system to function, and it is typically the parent process of all other user space processes on the system. 
 
+The init system is responsible for starting the init process, and the init process is responsible for starting and managing other system processes.
+
 There are different init systems available for Linux, each with its own approach to starting and managing processes. Some common init systems include:
 
 * System V init: This is the traditional init system used by many Linux distributions. It uses a series of shell scripts to start and stop services, and to transition the system between different runlevels.
@@ -38,9 +40,7 @@ There are different init systems available for Linux, each with its own approach
 
 * Systemd: This is the most widely used init system in modern Linux distributions. It is designed to start and manage services and other processes in a more efficient and reliable way. It uses a combination of configuration files and system management daemons to control the system.
 
-Each init system has its own advantages and disadvantages, and the choice of which init system to use is typically made by the distribution maintainer.
-
-Our system is simple and doesn't need a fullfledged init system, in this chapter we write a simple script as the init process and in future, we use BusyBox's init funtionalities.
+Our system is simple and doesn't need a fullfledged init system, in this chapter we write a simple script as the init process and in future, we use BusyBox's init prcosses.
 
 Now, lets start building. 
 
@@ -151,9 +151,12 @@ wget -c https://raw.githubusercontent.com/platonic-realm/project-zero/main/Chapt
 Alpine linux(which our container is based upon it) also uses BusyBox and the version of wget included with BusyBox does not support the -N option for timestamping. However, you can use the -c option to allow wget to resume a download that was previously interrupted, which will effectively overwrite the local file.
 
 ### **Option 2:** To configure the kernel your self
+This section has its own file, because its long and contains lots of images and description. Please continue to [building section](./Chapter-1.md#building-the-kernel) after you have finished the configuration.
+
+### **Building the kernel**
 
 ## Step 3: Configuring and bulding BusyBox
 
 ## Step 4: Create a initrd image
 
-## Step 5: Run our minimal system using qemu
+## Step 5: Running our minimal system using qemu
