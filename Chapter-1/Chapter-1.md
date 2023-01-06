@@ -57,6 +57,14 @@ If you followed the previous instructions in [Chapter 0](../Chapter-0/Chapter-0.
 ```
 docker run --user $(id -u):$(id -g) --platform=i386 --rm -it -v $(pwd):/host project-zero:x86-x86
 ```
+
+You might need to add library name to the command as below, if you want to use the ready-to-use OCI image and you didn't create the image localy.
+
+```
+docker run --user $(id -u):$(id -g) --platform=i386 --rm -it -v $(pwd):/host prealm/project-zero:x86-x86
+```
+
+
 Lets break down the meaning of each options:
 * **--user**: Instructs docker to use specific user and group ids instead of root. This makes life easier later when we want to access the files created in the container from the host. The command **"id"** is used to extract current user/group ids, so it should be availabe on the host.
 * **--platform:** Most probably, you are using a CPU with [AMD64](https://en.wikipedia.org/wiki/X86-64) [ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture), bust we are building a [i386](https://en.wikipedia.org/wiki/I386) operating system in an i386 container. AMD64 processesor are backward compatible and can support i386 code provided that the OS and the rest of software stack supports it. Here we are telling docker that we know what we are doing, so it stops sending us warnings about ISA mismatch. 
@@ -74,7 +82,7 @@ Linux kernel's and BusyBox's configurations remain consistent most of the time. 
 
 First, we create a directory **"res"** to download the source code tar files.
 ```
-mkdir res && cd res
+cd host && mkdir res && cd res
 ```
 
 Then download the Linux source tar file with command:
