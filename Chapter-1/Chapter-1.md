@@ -163,6 +163,26 @@ This section has its own file, because its long and contains lots of images and 
 
 ### **Building the kernel**
 
+To start building the kernel, the working directory should be **linux-build** and then run the commmand:
+
+```
+make -j$(nproc)
+```
+
+* **-j:** is used to specify the number of jobs that make should run simultaneously. This can be used to speed up the build process by allowing make to run multiple jobs in parallel, rather than running them sequentially.
+* **nproc:** is a utility that is used to display the number of processing units available to the current process, or to a specific user.
+
+If the compilation and linking finishes successfuly, we can find our kernel image at **arch/x86/boot/bzImage**.
+
+The result of the command:
+
+```
+ls -alh arch/x86/boot/bzImage
+```
+Should be something like:
+
+#ToDo add the image
+
 ## Step 3: Configuring and bulding BusyBox
 
 ## Step 4: Create a initrd image
